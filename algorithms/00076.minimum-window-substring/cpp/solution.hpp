@@ -17,17 +17,17 @@ class Solution {
     for (int left_index = 0, right_index = 0; right_index < s.size();
          ++right_index) {
       char c = s[right_index];
-      if (target_char_2_pending_count_.find(c) !=
-          target_char_2_pending_count_.end()) {
-        if (--target_char_2_pending_count_[c] >= 0) {
+      auto it = target_char_2_pending_count_.find(c);
+      if (it != target_char_2_pending_count_.end()) {
+        if (--it->second >= 0) {
           ++conver_count;
         }
 
         while (conver_count == t.size()) {
           c = s[left_index];
-          if (target_char_2_pending_count_.find(c) !=
-              target_char_2_pending_count_.end()) {
-            if (++target_char_2_pending_count_[c] > 0) {
+          it = target_char_2_pending_count_.find(c);
+          if (it != target_char_2_pending_count_.end()) {
+            if (++it->second > 0) {
               --conver_count;
               int size = right_index - left_index + 1;
               if (min_size > size) {
