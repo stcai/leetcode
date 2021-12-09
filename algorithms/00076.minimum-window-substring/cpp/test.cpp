@@ -26,3 +26,10 @@ TEST_CASE("test3") {
   string t("aa");
   CHECK(solution.minWindow(s, t) == "");
 }
+
+TEST_CASE("test_ext_1") {
+  Solution solution;
+  string s("cabwefgewcwaefgcf");
+  string t("cae");
+  CHECK(solution.minWindow(s, t) == "cwae");
+}
