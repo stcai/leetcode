@@ -28,3 +28,15 @@ TEST_CASE("test_ext_1") {
   int n = 100;
   CHECK(solution.monotoneIncreasingDigits(n) == 99);
 }
+
+TEST_CASE("test_ext_2") {
+  Solution solution;
+  int n = 0;
+  CHECK(solution.monotoneIncreasingDigits(n) == 0);
+}
+
+TEST_CASE("test_ext_3") {
+  Solution solution;
+  int n = 1000000000;
+  CHECK(solution.monotoneIncreasingDigits(n) == 999999999);
+}
