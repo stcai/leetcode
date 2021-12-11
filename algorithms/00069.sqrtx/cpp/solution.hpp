@@ -21,3 +21,15 @@ class Solution {
     return r;
   }
 };
+
+// Newton's method
+class Solution2 {
+ public:
+  int mySqrt(int x) {
+    long sqrt = x;
+    while (sqrt * sqrt > x) {
+      sqrt = (sqrt + x / sqrt) / 2;
+    }
+    return sqrt;
+  }
+};
