@@ -38,3 +38,32 @@ class Solution {
     return water;
   }
 };
+
+class Solution2 {
+ public:
+  int trap(vector<int>& height) {
+    int left = 0;
+    int right = height.size() - 1;
+    int leftMax = height[left];
+    int rightMax = height[right];
+    int water = 0;
+    while (left < right) {
+      if (leftMax <= rightMax) {
+        int nextValue = height[++left];
+        if (leftMax > nextValue) {
+          water += leftMax - nextValue;
+        } else if (leftMax < nextValue) {
+          leftMax = nextValue;
+        }
+      } else {
+        int nextValue = height[--right];
+        if (rightMax > nextValue) {
+          water += rightMax - nextValue;
+        } else if (rightMax < nextValue) {
+          rightMax = nextValue;
+        };
+      }
+    }
+    return water;
+  }
+};
