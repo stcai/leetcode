@@ -15,9 +15,10 @@ class Solution {
         return true;
       }
 
-      if (nums[left] == nums[mid]) {
+      if (nums[left] == nums[mid] && nums[right] == nums[mid]) {
         ++left;
-      } else if (nums[left] < nums[mid]) {
+        --right;
+      } else if (nums[left] <= nums[mid]) {
         if (nums[left] <= target && nums[mid] > target) {
           right = mid - 1;
         } else {
