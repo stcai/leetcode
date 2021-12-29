@@ -19,6 +19,9 @@ class Solution {
       result.push_back(combination);
       return;
     }
+    if (n - level + 1 < k - count) {
+      return;
+    }
 
     for (int i = level; i <= n; ++i) {
       combination[count] = i;

@@ -43,3 +43,12 @@ TEST_CASE("test_sample_2") {
   Solution solution;
   CHECK(sortResult(solution.combine(n, k)) == sortResult(result));
 }
+
+TEST_CASE("test_case_1") {
+  int n = 3;
+  int k = 3;
+  vector<vector<int>> result = {{1, 2, 3}};
+
+  Solution solution;
+  CHECK(sortResult(solution.combine(n, k)) == sortResult(result));
+}
