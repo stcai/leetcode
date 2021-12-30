@@ -9,19 +9,18 @@ class Solution {
     vector<bool> column(n);
     vector<bool> ldiag(2 * n - 1);
     vector<bool> rdiag(2 * n - 1);
-    string row(n, '.');
-    vector<string> one_solution;
+    vector<string> board(n, string(n, '.'));
     vector<vector<string>> result;
-    search(n, column, ldiag, rdiag, 0, row, one_solution, result);
+    search(n, column, ldiag, rdiag, 0, board, result);
     return result;
   }
 
  private:
   void search(int n, vector<bool>& column, vector<bool>& ldiag,
-              vector<bool>& rdiag, int level, string& row, vector<string>& one_solution,
+              vector<bool>& rdiag, int level, vector<string>& board,
               vector<vector<string>>& result) {
     if (level == n) {
-      result.push_back(one_solution);
+      result.push_back(board);
       return;
     }
 
@@ -30,14 +29,11 @@ class Solution {
         continue;
       }
 
-      row[i] = 'Q';
-      one_solution.push_back(row);
-      row[i]='.';
+      board[level][i]='Q';
       column[i] = ldiag[level + i] = rdiag[n - 1 - i + level] = true;
-      search(n, column, ldiag, rdiag, level + 1, row, one_solution, result);
-      one_solution.pop_back();
+      search(n, column, ldiag, rdiag, level + 1, board, result);
       column[i] = ldiag[level + i] = rdiag[n - 1 - i + level] = false;
-      
+      board[level][i]='.';
     }
   }
 };
