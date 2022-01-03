@@ -8,12 +8,20 @@ class Solution {
     if (nums.size() < 3) {
       return 0;
     }
-    vector<int> dp(nums.size(), 0);
+
+    int result = 0;
+    int diff = nums[1] - nums[0];
+    int last_count = 0;
     for (int i = 2; i < nums.size(); ++i) {
-      if (nums[i] - nums[i - 1] == nums[i - 1] - nums[i - 2]) {
-        dp[i] = dp[i - 1] + 1;
+      int new_diff = nums[i] - nums[i - 1];
+      if (new_diff == diff) {
+        ++last_count;
+        result += last_count;
+      } else {
+        diff = new_diff;
+        last_count = 0;
       }
     }
-    return accumulate(dp.begin(), dp.end(), 0);
+    return result;
   }
 };
